@@ -1,4 +1,4 @@
-name: Task manager
+name: REST API for task Manager
 
 on:
   push:
@@ -11,23 +11,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: test
+    environment: REST_API_TASK_MANAGER
     
     steps:
     - uses: actions/checkout@v3
       with: 
         fetch-depth: 0
-    - name: Display secret
-      run: echo $SSLKEY
-
-
-    - name: Install Node.js 
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-    
-    - name: set variables
-    
+   
+    - name: Create .env file
       env: 
           SSLKEY: "${{secrets.SSLKEY}}"
           SSLCERT: "${{secrets.SSLCERT}}"
@@ -48,24 +39,28 @@ jobs:
 
     - name: Print .env file
       run: |
-          cat .env
+        cat .env
 
+    - name: Install Node.js 
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    
+  
     - name: Start MongoDB
-
-      
       uses: supercharge/mongodb-github-action@1.8.0
       with:
           mongodb-version: 6.0
           mongodb-port: 27017
 
-    - name: Build
+    - name: Build NODE APP
       run: |
         npm ci
         npm install -g typescript
         npm run eslint
         npm run build
-      
-        npm run test
+    - name: Run tests
+      run: npm run test
     
       
     

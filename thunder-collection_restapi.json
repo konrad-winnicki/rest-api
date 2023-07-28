@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "restapi",
-    "dateExported": "2023-07-24T20:26:43.052Z",
+    "dateExported": "2023-07-28T14:20:58.914Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -9,7 +9,7 @@
             "_id": "a816369c-dc5c-415f-9bcc-ec61770759ae",
             "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
             "containerId": "",
-            "name": "create user!",
+            "name": "create_user1",
             "url": "localhost:4001/api/v1/users",
             "method": "POST",
             "sortNum": 20000,
@@ -127,7 +127,7 @@
             "method": "POST",
             "sortNum": 50000,
             "created": "2023-07-24T10:54:18.460Z",
-            "modified": "2023-07-24T11:05:55.342Z",
+            "modified": "2023-07-25T07:36:37.710Z",
             "headers": [],
             "params": [],
             "body": {
@@ -157,12 +157,12 @@
             "method": "POST",
             "sortNum": 60000,
             "created": "2023-07-24T10:56:02.095Z",
-            "modified": "2023-07-24T11:41:49.955Z",
+            "modified": "2023-07-24T20:26:48.546Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n    \"name\": \"task1\",\n    \"date\": \"\",\n    \"time\": \"\"\n}",
+                "raw": "{\n    \"name\": \"task1\",\n    \"date\": \"2023-01-01\",\n    \"time\": \"15:30\"\n}",
                 "form": []
             },
             "auth": {
@@ -180,12 +180,12 @@
             "method": "POST",
             "sortNum": 60000,
             "created": "2023-07-24T10:57:01.827Z",
-            "modified": "2023-07-24T10:57:37.632Z",
+            "modified": "2023-07-25T07:58:17.936Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\r\n    \"name\": \"task3\",\r\n    \"date\": \"2023-01-01\",\r\n    \"time\": \"15:00\"\r\n}",
+                "raw": "{\n    \"name\": \"task3\",\n    \"date\": \"2023-01-01\",\n    \"time\": \"15:00\"\n}",
                 "form": []
             },
             "auth": {
@@ -300,24 +300,6 @@
             "sortNum": 80000,
             "created": "2023-07-24T11:09:42.233Z",
             "modified": "2023-07-24T11:26:51.404Z",
-            "headers": [],
-            "params": [],
-            "auth": {
-                "type": "bearer",
-                "bearer": "{{token_user1}}"
-            },
-            "tests": []
-        },
-        {
-            "_id": "4d12e1f3-a7f3-46be-800d-54801b4a5993",
-            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
-            "containerId": "",
-            "name": "delete not existing user",
-            "url": "localhost:4001/api/v1/users/64be5de69d74d094529fe75b",
-            "method": "DELETE",
-            "sortNum": 90000,
-            "created": "2023-07-24T11:27:10.980Z",
-            "modified": "2023-07-24T11:27:47.423Z",
             "headers": [],
             "params": [],
             "auth": {
