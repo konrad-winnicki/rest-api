@@ -1,0 +1,72 @@
+name: Task manager
+
+on:
+  push:
+    branches: 
+      - "main"
+  pull_request:
+    branches: 
+      - "main" 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: test
+    
+    steps:
+    - uses: actions/checkout@v3
+      with: 
+        fetch-depth: 0
+    - name: Display secret
+      run: echo $SSLKEY
+
+
+    - name: Install Node.js 
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    
+    - name: set variables
+    
+      env: 
+          SSLKEY: "${{secrets.SSLKEY}}"
+          SSLCERT: "${{secrets.SSLCERT}}"
+          TOKEN_SIGNATURE: '${{secrets.TOKEN_SIGNATURE}}'
+          DATABASE_URI_TEST: '${{secrets.DATABASE_URI_TEST}}'
+          DATABASE_URI_DEV: '${{secrets.DATABASE_URI_DEV}}'
+          DATABASE_URI_PROD: '${{secrets.DATABASE_URI_PROD}}'
+          PORT: '${{secrets.PORT}}'
+      run: |
+          echo "SSLKEY=${SSLKEY}" >> .env
+          echo "SSLCERT=${SSLCERT}" >> .env
+          echo "TOKEN_SIGNATURE=${TOKEN_SIGNATURE}" >> .env
+          echo "DATABASE_URI_TEST=${DATABASE_URI_TEST}" >> .env
+          echo "DATABASE_URI_DEV=${DATABASE_URI_DEV}" >> .env
+          echo "DATABASE_URI_PROD=${DATABASE_URI_PROD}" >> .env
+          echo "PORT=${PORT}" >> .env
+          echo NODE_ENV=test >> .env
+
+    - name: Print .env file
+      run: |
+          cat .env
+
+    - name: Start MongoDB
+
+      
+      uses: supercharge/mongodb-github-action@1.8.0
+      with:
+          mongodb-version: 6.0
+          mongodb-port: 27017
+
+    - name: Build
+      run: |
+        npm ci
+        npm install -g typescript
+        npm run eslint
+        npm run build
+      
+        npm run test
+    
+      
+    
+        

@@ -1,0 +1,20 @@
+{
+    "client": "Thunder Client",
+    "environmentName": "variables",
+    "dateExported": "2023-07-24T11:36:46.556Z",
+    "version": "1.0",
+    "variables": [
+        {
+            "name": "token_user1",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YmU2MDdmOWMyZmI4ZjRhYjQxMWQyYiIsIm5hbWUiOiJ1c2VyMSIsImlhdCI6MTY5MDE5ODM0MCwiZXhwIjoxNjkwMjAxOTQwfQ.Rv9m3vYV0mRs-yP8QRmRL9wcYFF4LEQsaG-8QCEpnZc"
+        },
+        {
+            "name": "user1_taskId",
+            "value": "64be609a9c2fb8f4ab411d33"
+        },
+        {
+            "name": "user1_id",
+            "value": "64be607f9c2fb8f4ab411d2b"
+        }
+    ]
+}

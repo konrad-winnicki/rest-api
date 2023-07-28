@@ -1,0 +1,337 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "restapi",
+    "dateExported": "2023-07-24T20:26:43.052Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "a816369c-dc5c-415f-9bcc-ec61770759ae",
+            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
+            "containerId": "",
+            "name": "create user!",
+            "url": "localhost:4001/api/v1/users",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-07-24T09:07:27.113Z",
+            "modified": "2023-07-24T11:17:22.203Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\t\"name\": \"user1\",\n    \"password\":\"user1\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.Created",
+                    "action": "setto",
+                    "value": "{{user1_id}}"
+                }
+            ]
+        },
+        {
+            "_id": "aec7f82c-2224-4757-8a3c-1b7927c714e6",
+            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
+            "containerId": "",
+            "name": "create user with the same name",
+            "url": "localhost:4001/api/v1/users",
+            "method": "POST",
+            "sortNum": 25000,
+            "created": "2023-07-24T11:28:27.086Z",
+            "modified": "2023-07-24T11:59:28.518Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\t\"name\": \"user1\",\n    \"password\":\"user1\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "34ba3855-aec6-4c80-8bdf-3f2ffb55f4ad",
+            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
+            "containerId": "",
+            "name": "login user1",
+            "url": "localhost:4001/api/v1/users/login",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-07-24T09:09:59.465Z",
+            "modified": "2023-07-24T11:18:54.889Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\t\"name\": \"user1\",\n    \"password\": \"user1\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.accessToken",
+                    "action": "setto",
+                    "value": "{{token_user1}}"
+                }
+            ]
+        },
+        {
+            "_id": "b42baaf8-19f1-4a47-9b26-246908bf396a",
+            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
+            "containerId": "",
+            "name": "login user1 with wrong password",
+            "url": "localhost:4001/api/v1/users/login",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-07-24T11:29:57.208Z",
+            "modified": "2023-07-24T12:01:26.837Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\t\"name\": \"user1\",\n    \"password\": \"user2\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ff4eed05-f0d6-4149-8180-5b58478dbf78",
+            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
+            "containerId": "",
+            "name": "get with wrong token",
+            "url": "localhost:4001/api/v1/tasks",
+            "method": "GET",
+            "sortNum": 45000,
+            "created": "2023-07-24T11:30:21.949Z",
+            "modified": "2023-07-24T19:55:47.329Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\t\"name\": \"user1\",\n    \"password\": \"user1\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YmVjMzFiNzliZmM4MGZlNTMyOWNkZiIsIm5hbWUiOiJ1c2VyMSIsImlhdCI6MTY5MDIyMzY2MCwiZXhwIjoxNjkwMjI3MjYwfQ.IDFZlq-FuzqApm2B_j3vqujJ0fiE5O7NBhQ_wrHXOgQ"
+            },
+            "tests": []
+        },
+        {
+            "_id": "3d8adb16-8357-4dd4-8add-a934402b0480",
+            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
+            "containerId": "",
+            "name": "create task1 for user1",
+            "url": "localhost:4001/api/v1/tasks",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-07-24T10:54:18.460Z",
+            "modified": "2023-07-24T11:05:55.342Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"name\": \"task1\",\n    \"date\": \"\",\n    \"time\": \"\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token_user1}}"
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.Created.id",
+                    "action": "setto",
+                    "value": "{{user1_taskId}}"
+                }
+            ]
+        },
+        {
+            "_id": "c9731eab-40b0-4faa-912b-6438a20120cc",
+            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
+            "containerId": "",
+            "name": "create task2 for user1",
+            "url": "localhost:4001/api/v1/tasks",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-07-24T10:56:02.095Z",
+            "modified": "2023-07-24T11:41:49.955Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"name\": \"task1\",\n    \"date\": \"\",\n    \"time\": \"\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token_user1}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "a46614a5-7dca-4e98-8a1c-1cc57e39cc77",
+            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
+            "containerId": "",
+            "name": "create task3 for user1",
+            "url": "localhost:4001/api/v1/tasks",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-07-24T10:57:01.827Z",
+            "modified": "2023-07-24T10:57:37.632Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"name\": \"task3\",\r\n    \"date\": \"2023-01-01\",\r\n    \"time\": \"15:00\"\r\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token_user1}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "e21a9e56-bd48-43d3-999e-b9188954ff57",
+            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
+            "containerId": "",
+            "name": "update task1 for user1",
+            "url": "localhost:4001/api/v1/tasks/{{user1_taskId}}",
+            "method": "PUT",
+            "sortNum": 65000,
+            "created": "2023-07-24T11:07:55.661Z",
+            "modified": "2023-07-24T11:08:35.968Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token_user1}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "cf2db256-3acd-4789-92d3-3cf6aca27d1e",
+            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
+            "containerId": "",
+            "name": "update not existing task for user1",
+            "url": "localhost:4001/api/v1/tasks/{{user1_taskId}}",
+            "method": "PUT",
+            "sortNum": 65000,
+            "created": "2023-07-24T11:08:55.781Z",
+            "modified": "2023-07-24T11:08:55.781Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token_user1}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "5edf2f82-001d-4ed1-b598-3f08d170231a",
+            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
+            "containerId": "",
+            "name": "get task for user1",
+            "url": "localhost:4001/api/v1/tasks",
+            "method": "GET",
+            "sortNum": 67500,
+            "created": "2023-07-24T09:15:04.130Z",
+            "modified": "2023-07-24T18:39:14.770Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "bearer {{token_user1}}",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token_user1}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "2dcd00be-8fbd-4c8b-b373-07d4678ce06c",
+            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
+            "containerId": "",
+            "name": "delete task1 from user1",
+            "url": "localhost:4001/api/v1/tasks/{{user1_taskId}}",
+            "method": "DELETE",
+            "sortNum": 68750,
+            "created": "2023-07-24T11:02:18.123Z",
+            "modified": "2023-07-24T11:03:25.911Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token_user1}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "a99622fb-0bd4-421a-b3a4-3c0f7e8ad59b",
+            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
+            "containerId": "",
+            "name": "delete not existing task from user1",
+            "url": "localhost:4001/api/v1/tasks/64be3c7ff4f7f09f76309dec",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2023-07-24T11:06:18.104Z",
+            "modified": "2023-07-24T11:07:01.670Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token_user1}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "7a3db925-7180-4fa7-bc74-a934806963f3",
+            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
+            "containerId": "",
+            "name": "delete user",
+            "url": "localhost:4001/api/v1/users/{{user1_id}}",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2023-07-24T11:09:42.233Z",
+            "modified": "2023-07-24T11:26:51.404Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token_user1}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "4d12e1f3-a7f3-46be-800d-54801b4a5993",
+            "colId": "0d5013bb-6192-4e78-a3e0-16bc3d16e03e",
+            "containerId": "",
+            "name": "delete not existing user",
+            "url": "localhost:4001/api/v1/users/64be5de69d74d094529fe75b",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2023-07-24T11:27:10.980Z",
+            "modified": "2023-07-24T11:27:47.423Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token_user1}}"
+            },
+            "tests": []
+        }
+    ],
+    "settings": {
+        "runOptions": {
+            "delay": 1,
+            "iterations": 1,
+            "dataFilePath": ""
+        }
+    }
+}
