@@ -1,10 +1,9 @@
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
-import dotenv from "dotenv";
+import sanitizedConfig from "../../../config";
 
-dotenv.config();
 
-const tokenSignature = process.env.TOKEN_SIGNATURE || "token_testing_signature";
+const tokenSignature = sanitizedConfig.TOKEN_SIGNATURE || "token_testing_signature";
 
 export const userAuthorizer = (
   req: Request,

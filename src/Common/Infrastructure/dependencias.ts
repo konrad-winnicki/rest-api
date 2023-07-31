@@ -6,37 +6,28 @@ import { UserService } from "../../User/Application/UserService";
 import { UserController } from "../../User/Infrastructure/userControllers";
 import { TaskController } from "../../Task/Infrastructure/taskControllers";
 import { HttpResponse } from "./HttpResponse";
-import dotenv from "dotenv";
 import { ErrorHandler } from "./ErrorHandler";
-dotenv.config();
+import sanitizedConfig from "../../config"
 
-if (
-  !process.env.DATABASE_URI_PROD ||
-  !process.env.DATABASE_URI_DEV ||
-  !process.env.DATABASE_URI_TEST
-) {
-  console.error("Lack of database uri");
-  process.exit(1);
-}
 
 let DATABASE_URI = "";
 switch (process.env.NODE_ENV) {
-  case "production":
-    DATABASE_URI = process.env.DATABASE_URI_PROD;
+  case "prod":
+    DATABASE_URI = sanitizedConfig.DATABASE_URI_PROD;
     break;
-  case "development":
-    DATABASE_URI = process.env.DATABASE_URI_DEV;
+  case "dev":
+    DATABASE_URI = sanitizedConfig.DATABASE_URI_DEV;
     break;
   case "test":
-    DATABASE_URI = process.env.DATABASE_URI_TEST;
+    DATABASE_URI = sanitizedConfig.DATABASE_URI_TEST;
     break;
   case "dev-docs":
-    DATABASE_URI = process.env.DATABASE_URI_TEST;
+    DATABASE_URI = sanitizedConfig.DATABASE_URI_TEST;
     break;
 }
 
 const databaseCredentialsSetup =
-  process.env.NODE_ENV === "production"
+sanitizedConfig.NODE_ENV === "prod"
     ? {
         sslValidate: true,
         tlsCertificateKeyFile: process.env.SSLCERT,

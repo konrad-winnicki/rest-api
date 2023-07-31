@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node ./dist/serverStart.js",
-    "start": "cross-env NODE_ENV=production node ./dist/serverStart.js",
+    "dev": "cross-env NODE_ENV=dev node ./dist/serverStart.js",
+    "start": "cross-env NODE_ENV=prod node ./dist/serverStart.js",
     "test": "cross-env NODE_ENV=test npx jest --verbose --silent",
     "docs": "concurrently \"cross-env NODE_ENV=test node ./dist/serverStart.js\" \"cross-env NODE_ENV=dev-docs npx jest --verbose --silent\"",
     "build": "npx tsc",

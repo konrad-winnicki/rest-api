@@ -4,11 +4,10 @@ import jwt from "jsonwebtoken";
 import { InputUser } from "../Domain/InputUser";
 import { HttpResponse } from "../../Common/Infrastructure/HttpResponse";
 import { UserService } from "../../User/Application/UserService";
-import dotenv from "dotenv";
 import { User } from "../../User/Domain/User";
-dotenv.config();
+import sanitizedConfig from "../../config";
 
-const tokenSignature = process.env.TOKEN_SIGNATURE || "token_testing_signature";
+const tokenSignature = sanitizedConfig.TOKEN_SIGNATURE || "token_testing_signature";
 
 export class UserController {
   private userService: UserService;

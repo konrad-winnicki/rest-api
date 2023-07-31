@@ -3,9 +3,7 @@ import { Task } from "../../Task/Domain/Task";
 import { TaskRepositoryInterface } from "../Application/TaskRepositoryInterface";
 import { InputTask } from "../Domain/InputTask";
 import { User } from "../../User/Domain/User";
-import dotenv from "dotenv";
 import { TaskSorter } from "../../Task/Domain/TaskSorter";
-dotenv.config();
 
 const taskSorter = new TaskSorter();
 

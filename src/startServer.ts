@@ -1,8 +1,7 @@
-import dotenv from "dotenv";
 import { app } from "./app";
-dotenv.config();
+import sanitizedConfig from "./config";
 
-const PORT = process.env.PORT || 4002;
+const PORT = sanitizedConfig.PORT || 4002;
 
 export const server = app.listen(PORT, () => {
   console.log(`App listen at port: ${PORT}`);
