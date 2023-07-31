@@ -11,7 +11,7 @@ import sanitizedConfig from "../../config"
 
 
 let DATABASE_URI = "";
-switch (process.env.NODE_ENV) {
+switch (sanitizedConfig.NODE_ENV) {
   case "prod":
     DATABASE_URI = sanitizedConfig.DATABASE_URI_PROD;
     break;

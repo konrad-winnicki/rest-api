@@ -1,4 +1,5 @@
-export {};
+
+export type Environment = 'dev'|'prod'|'test' | 'dev-docs'
 
 declare global {
   namespace NodeJS {
@@ -10,7 +11,7 @@ declare global {
       TOKEN_SIGNATURE: string;
       SSLKEY: string;
       SSLCERT: string;
-      NODE_ENV: string;
+      NODE_ENV: Environment;
     }
   }
 }
