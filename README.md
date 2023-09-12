@@ -10,6 +10,7 @@ This module was established to learn `REST API` basic principles. The project co
 - [Description](#description)
 - [Instalations](#instalations)
 - [Usage](#usage)
+- [Testing with Thunder Client](#testing-with-thunder-client)
 - [Folder structure](#folder-structure)
 ## Description
 The `Task Manager REST API` may be used by frontend applications to manage everyday tasks. All endpoints are documented with `Swagger` and can be found at http://localhost:4001/api-docs/ after running the application in [docs](#docs) mode.
@@ -27,7 +28,24 @@ npm install
 ```
 In the production, application connect to `MongoDB Atlas`. In the development mode it uses a `MongoDB` database started on the localhost. Thus, to use dev mode you need to [download](https://www.mongodb.com/try/download/community) and install `MongoDB`. All necessary configurations for transpilation and testing you will find in `tsconfig.json` and `package.json`, respectively.
 
+If you prefere run `Docker` container you can use services defined in `docker-compose.yaml` file by typing in root directory:
+```bash
+docker compose up mongodb -d 
+```
+
 ## Usage
+First you have to prepare .env file in project root directory. The following key-value pairs must be defined:
+```bash
+SSLKEY='path to file with certificate'
+SSLCERT='path to file with certificate'
+DATABASE_URI_PROD='uri to database'
+DATABASE_URI_DEV='mongodb://127.0.0.1:27017/taskManager'
+DATABASE_URI_TEST='mongodb://127.0.0.1:27017/test'
+TOKEN_SIGNATURE='9c7103c5-41a7-4383-92f9-d68ec50b2975'
+PORT='4001'
+
+```
+Before running application you have to transpile `TypeScript` to `JavaScript`.
 
 Project contains several predefined scripts which can be initialized with `npm run` and:</br>
 ```build``` : to transpile `TypeScript` to `JavaScript` </br>
@@ -43,8 +61,11 @@ Example:
 ```console
 npm run docs
 ```
+## Testing with Thunder Client
+For testing `Thunder Client` can be also used. You can find it in extensions for VCS. In the project root folder you can find `thunder-collection_restapi.json` to import as Collections and `thunder-environment_variables.json` to import es Env. 
 
-For testing `Thunder Client` can be also used. In the root folder you can find `thunder-collection_restapi.json` and `thunder-environment_variables.json`
+
+
 ## Folder structure
 
 ```
