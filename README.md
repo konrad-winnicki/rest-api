@@ -45,7 +45,7 @@ TOKEN_SIGNATURE='9c7103c5-41a7-4383-92f9-d68ec50b2975'
 PORT='4001'
 
 ```
-Before running application you have to transpile `TypeScript` to `JavaScript`.
+Before tests, building API doc and running application you have to transpile `TypeScript` to `JavaScript`.
 
 Project contains several predefined scripts which can be initialized with `npm run` and:</br>
 ```build``` : to transpile `TypeScript` to `JavaScript` </br>

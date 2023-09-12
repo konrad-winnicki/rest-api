@@ -7,7 +7,7 @@
     "dev": "cross-env NODE_ENV=dev node ./dist/startServer.js",
     "start": "cross-env NODE_ENV=prod node ./dist/startServer.js",
     "test": "cross-env NODE_ENV=test npx jest --verbose --silent",
-    "docs": "concurrently \"cross-env NODE_ENV=test node ./dist/serverStart.js\" \"cross-env NODE_ENV=dev-docs npx jest --verbose --silent\"",
+    "docs": "concurrently \"cross-env NODE_ENV=test node ./dist/startServer.js\" \"cross-env NODE_ENV=dev-docs npx jest --verbose --silent\"",
     "build": "npx tsc",
     "eslint": "npx eslint ."
   },
